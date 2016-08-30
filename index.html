@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <style>
+        div{
+            width: 600px;
+            height: 500px;
+            margin: 0 auto;
+            border: 1px solid #cccccc;
+            background-color: #eeeeee;
+            position: relative;
+        }
+        span{
+            display: block;
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border: 1px solid #666666;
+            border-radius: 50%;
+            top: 30%;
+            left: 30%;
+        }
+        .time-1{
+            display: inline-block;
+            font-size: 12px;
+            text-align: center;
+            width: 12px;
+            height: 12px;
+            line-height: 12px;
+            position: absolute;
+            top: 4px;
+            left: calc(50% - 6px);
+        }
+        .time-2{
+            display: inline-block;
+            font-size: 12px;
+            text-align: center;
+            width: 12px;
+            height: 12px;
+            line-height: 12px;
+            position: absolute;
+            top: calc(50% - 6px);
+            right: 4px;
+        }
+        .time-3{
+            display: inline-block;
+            font-size: 12px;
+            text-align: center;
+            width: 12px;
+            height: 12px;
+            line-height: 12px;
+            position: absolute;
+            bottom: 4px;
+            left: calc(50% - 6px);
+        }
+        .time-4{
+            display: inline-block;
+            font-size: 12px;
+            text-align: center;
+            width: 12px;
+            height: 12px;
+            line-height: 12px;
+            position: absolute;
+            top: calc(50% - 6px);
+            left: 4px;
+        }
+        .circle{
+            display: block;
+            position: relative;
+            width: 6px;
+            height: 6px;
+            border: 1px solid red;
+            border-radius: 50%;
+            background-color: red;
+            left: calc(50% - 4px);
+            top:calc(50% - 4px);
+            z-index: 100;
+        }
+        .hour{
+            display: inline-block;
+            width: 4px;
+            height: 120px;
+            position: absolute;
+            left: calc(50% - 2px);
+            top: calc(50% - 60px);
+            transform: rotate(360deg)
+        }
+        .hour i{
+            display: inline-block;
+            background-color: black;
+            height: 53%;
+            width: 2px;
+            border-radius: 2px;
+            border: 1px solid black;
+        }
+        .minute{
+            display: inline-block;
+            width: 3px;
+            height: 150px;
+            position: absolute;
+            left: calc(50% - 1.5px);
+            top: calc(50% - 75px);
+            transform: rotate(90deg)
+        }
+        .minute i{
+            display: inline-block;
+            background-color: #111111;
+            height: 54%;
+            width: 1px;
+            border-radius: 5%;
+            border: 1px solid #111111;
+        }
+        .second{
+            display: inline-block;
+            width: 1px;
+            height: 180px;
+            position: absolute;
+            left: calc(50% - 1px);
+            top: calc(50% - 90px);
+            transform: rotate(40deg)
+        }
+        .second i{
+            display: inline-block;
+            background-color: red;
+            height: 60%;
+            width: 1px;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <span>
+            <b class="time-1">12</b>
+            <b class="time-2">3</b>
+            <b class="time-3">6</b>
+            <b class="time-4">9</b>
+            <i class="circle"></i>
+            <i class="hour"><i></i></i>
+            <i class="minute"><i></i></i>
+            <i class="second"><i></i></i>
+        </span>
+    </div>
+</body>
+<script>
+    func();
+    function func(){
+        var time = new Date();
+        var h = time.getHours();
+        var m = time.getMinutes();
+        var s = time.getSeconds();
+        $('.hour').css('transform', 'rotate(' + (360/12*h+6*m/12) +  'deg)');
+        $('.minute').css('transform','rotate(' + 6*m + 'deg)');
+        $('.second').css('transform','rotate(' + 6*s+ 'deg)');
+        setTimeout(function(){
+            func()
+        },1000)
+    }
+</script>
+</html>
